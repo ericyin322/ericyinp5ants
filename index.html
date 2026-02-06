@@ -11,6 +11,55 @@
 </head>
 
 <body>
+    <div id="ui-layer">
+        <!-- Top Stats Bar -->
+        <div id="top-bar">
+            <div class="stat-group">
+                <span class="stat-label">FOOD</span>
+                <span id="stat-food" class="stat-value">0</span>
+            </div>
+            <div class="stat-group">
+                <span class="stat-label">WORKERS</span>
+                <span id="stat-worker" class="stat-value">0</span>
+            </div>
+            <div class="stat-group">
+                <span class="stat-label">ARMY</span>
+                <span id="stat-army" class="stat-value">0</span>
+            </div>
+            <div class="stat-group">
+                <span class="stat-label">SPAWN RATE</span>
+                <span id="stat-spawn" class="stat-value">1.0x</span>
+            </div>
+        </div>
+
+        <!-- Bottom Controls -->
+        <div id="bottom-controls">
+            <div class="control-group">
+                <div class="group-title">UNITS</div>
+                <button id="btn-spawn-worker" class="game-btn">
+                    <span class="btn-name">Worker</span>
+                    <span class="btn-cost">10 Food</span>
+                </button>
+                <button id="btn-spawn-army" class="game-btn">
+                    <span class="btn-name">Army</span>
+                    <span class="btn-cost">20 Food</span>
+                </button>
+            </div>
+
+            <div class="control-group">
+                <div class="group-title">UPGRADES</div>
+                <button id="btn-upg-carry" class="game-btn">
+                    <span class="btn-name">Carry +1</span>
+                    <span class="btn-cost">100 Food</span>
+                </button>
+                <button id="btn-upg-spawn" class="game-btn">
+                    <span class="btn-name">Spawn Rate</span>
+                    <span class="btn-cost">150 Food</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <main id="game-container">
     </main>
 </body>

@@ -1,0 +1,142 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+canvas {
+  display: block;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+
+/* UI Overlay */
+#ui-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Let clicks pass through to canvas where UI is empty */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: 'Courier New', Courier, monospace; /* Tech/RTS feel */
+    z-index: 10;
+}
+
+/* Enable pointer events for actual UI elements */
+#top-bar, #bottom-controls {
+    pointer-events: auto;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    backdrop-filter: blur(4px);
+}
+
+/* Top Bar */
+#top-bar {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+.stat-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: #aaa;
+    text-transform: uppercase;
+}
+
+.stat-value {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+/* Bottom Controls */
+#bottom-controls {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    padding-bottom: 20px;
+}
+
+.control-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.group-title {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: 0.7rem;
+    color: #888;
+    text-align: center;
+    border-left: 2px solid #555;
+    padding-left: 5px;
+    margin-right: 5px;
+}
+
+/* Buttons */
+.game-btn {
+    background: linear-gradient(180deg, #3a3a3a, #222);
+    border: 1px solid #555;
+    color: white;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 100px;
+    transition: all 0.1s;
+}
+
+.game-btn:hover {
+    background: linear-gradient(180deg, #4a4a4a, #333);
+    border-color: #888;
+}
+
+.game-btn:active {
+    background: #111;
+    transform: translateY(2px);
+}
+
+.game-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: #1a1a1a;
+    border-color: #333;
+    transform: none;
+}
+
+.btn-name {
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+.btn-cost {
+    font-size: 0.7rem;
+    color: #ffa500;
+}
+

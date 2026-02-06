@@ -91,35 +91,36 @@ class Game {
     }
 
     setupUI() {
-        this.uiDiv = createDiv('').position(10, 10).style('color', 'white').style('font-family', 'monospace');
+        // Bind Top Bar Stats
+        this.elFood = select('#stat-food');
+        this.elWorker = select('#stat-worker');
+        this.elArmy = select('#stat-army');
+        this.elSpawn = select('#stat-spawn');
 
-        const btnContainer = createDiv('').position(10, H - 60);
-
-        this.btnSpawnWorker = createButton('Spawn Worker (10 Food)').parent(btnContainer);
+        // Bind Buttons
+        this.btnSpawnWorker = select('#btn-spawn-worker');
         this.btnSpawnWorker.mousePressed(() => this.colonies[0].manualSpawn('WORKER'));
 
-        this.btnSpawnArmy = createButton('Spawn Army (20 Food)').parent(btnContainer);
+        this.btnSpawnArmy = select('#btn-spawn-army');
         this.btnSpawnArmy.mousePressed(() => this.colonies[0].manualSpawn('ARMY'));
 
-        this.btnUpgradeCarry = createButton('Upgrade Carry (100 Food)').parent(btnContainer);
+        this.btnUpgradeCarry = select('#btn-upg-carry');
         this.btnUpgradeCarry.mousePressed(() => this.colonies[0].upgrade('CARRY'));
 
-        this.btnUpgradeSpawn = createButton('Upgrade Spawn Rate (150 Food)').parent(btnContainer);
+        this.btnUpgradeSpawn = select('#btn-upg-spawn');
         this.btnUpgradeSpawn.mousePressed(() => this.colonies[0].upgrade('SPAWN'));
     }
 
     updateUI() {
         const pc = this.colonies[0];
-        this.uiDiv.html(
-            `<h3>${pc.race.name} (Player)</h3>` +
-            `Food: ${Math.floor(pc.foodStock)}<br>` +
-            `Workers: ${pc.ants.filter(a => a.role === 'WORKER').length}<br>` +
-            `Army: ${pc.ants.filter(a => a.role === 'ARMY').length}<br>` +
-            `Carry Cap: ${pc.race.stats.carry}<br>` +
-            `Spawn Rate: ${pc.race.stats.spawnRate.toFixed(1)}<br>`
-        );
 
-        // Dynamic disable/enable buttons based on food
+        // Update Stats
+        this.elFood.html(Math.floor(pc.foodStock));
+        this.elWorker.html(pc.ants.filter(a => a.role === 'WORKER').length);
+        this.elArmy.html(pc.ants.filter(a => a.role === 'ARMY').length);
+        this.elSpawn.html(pc.race.stats.spawnRate.toFixed(1) + 'x');
+
+        // Update Button States
         if (pc.foodStock < 10) this.btnSpawnWorker.attribute('disabled', '');
         else this.btnSpawnWorker.removeAttribute('disabled');
 
